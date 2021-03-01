@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000
 const connectDB = require('./database/mongoDB')
 
 const userRoutes = require('./routes/userRoutes')
-const dataRoutes = require('./routes/dataProcessing')
+const dataRoutes = require('./routes/dataRoutes')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
