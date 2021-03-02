@@ -1,0 +1,22 @@
+.footer__container {
+  background-color: #454951;
+  width: 100vw;
+  height: 3rem;
+  position: absolute;
+  bottom: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .footer__container-content {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer__container-content {
+    font-size: 0.6rem;
+  }
+}
