@@ -5,8 +5,9 @@ import Navbar from './components/navbar/navbar'
 import Login from './components/login/login'
 import Register from './components/register/register'
 import Footer from './components/footer/footer'
+import UserHistory from './components/userhistory/userhistory'
 
-const isAuthenticated = true
+const isAuthenticated = false
 
 const App = () => {
     return (
@@ -14,8 +15,9 @@ const App = () => {
             <Navbar auth={isAuthenticated}/>
             <Switch>
                 {isAuthenticated && <Route exact path="/" component={Home} />}
+                {isAuthenticated && <Route exact path="/history" component={UserHistory} />}
                 <Route exact path="/" component={Login} />
-                <Route exact path="/register" component={Register} />
+                {!isAuthenticated && <Route path="/register" component={Register} />}
             </Switch>
             <Footer />
         </BrowserRouter>

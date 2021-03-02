@@ -7,6 +7,7 @@
     margin: 1rem 0;
   }
 
+  //Search bar properties
   .searchbar__container {
     display: flex;
     justify-content: center;
@@ -14,26 +15,16 @@
     .searchbar__inputfield {
       min-width: 25rem;
       width: 50rem;
-      height: 3.5rem;
       border-radius: 2px;
       border: none;
       outline: none;
       padding: 0 .5rem;
       font-size: 1.5rem;
       font-weight: 600;
-      color: var(--secondary-font-color);
+      color: var(--inputfield-font-color);
       background-color: var(--input-bg);
     }
-
-    .searchbar__btn {
-      display: inherit;
-      align-self: center;
-      padding: 0 1rem;
-      cursor: pointer;
-
-      &:hover {
-        color: var(--cta-font-hover)
-      }
-    }
   }
+
+  // Result section properties
 }

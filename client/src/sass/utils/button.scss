@@ -1,0 +1,12 @@
+.button-cta {
+  width: auto;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 2px;
+  background-color: var(--cta-btn-bg);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--cta-btn-bg-hover);
+  }
+}

@@ -35,35 +35,109 @@ code {
 
 :root {
   --primary-font-color: #e3e3e3;
-  --secondary-font-color: #b3b3b3;
+  --inputfield-font-color: #5a5a5a;
   --navbar-bg: #3b4eb8;
-  --footer-bg: #454951;
-  --cta-font-hover: #ffffff;
+  --footer-bg: #1b1e32;
+  --link-font-color: #28337e;
+  --link-font-hover: #ffffff;
+  --cta-btn-bg: #003e80;
+  --cta-btn-bg-hover: #0055a9;
   --input-bg: #EFEFEF;
+}
+
+.button-cta {
+  width: auto;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 2px;
+  background-color: var(--cta-btn-bg);
+  cursor: pointer;
+}
+.button-cta:hover {
+  background-color: var(--cta-btn-bg-hover);
+}
+
+.form__container {
+  display: flex;
+  justify-content: center;
+  margin: 10rem auto;
+}
+.form__container section {
+  display: block;
+}
+.form__container section .form__btn-wrapper {
+  margin: 2rem 0;
+}
+.form__container section .form__error-msg {
+  color: #b31d1d;
+  font-size: 1.4rem;
+}
+.form__container section aside {
+  text-align: center;
+  margin-top: 1rem;
+}
+.form__container section aside a {
+  text-decoration: underline;
+}
+.form__container section aside a :hover {
+  color: var(--link-font-hover);
 }
 
 .navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 4rem;
   height: 7rem;
-  width: 100vw;
+  width: 100%;
   background-color: var(--navbar-bg);
   -webkit-box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.47);
 }
 .navbar__container .navbar__logo {
   margin: 0 1rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
 }
+.navbar__container .navbar__username {
+  position: relative;
+  display: inline-block;
+}
+.navbar__container .navbar__username .navbar__username--dropdown {
+  cursor: pointer;
+  font-size: 1.9rem;
+  letter-spacing: 0.25px;
+}
+.navbar__container .navbar__username .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--navbar-bg);
+  opacity: 0.85;
+  min-width: 16rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  right: 0;
+  border-radius: 2px;
+}
+.navbar__container .navbar__username .dropdown-content a {
+  padding: 1.2rem 1.6rem;
+  text-decoration: none;
+  display: block;
+  font-size: 1.4rem;
+}
+.navbar__container .navbar__username .dropdown-content a:hover {
+  color: var(--link-font-hover);
+}
+.navbar__container .navbar__username:hover .dropdown-content {
+  display: block;
+}
+
 .footer__container {
   background-color: var(--footer-bg);
-  width: 100vw;
-  height: 3rem;
+  width: 100%;
+  height: 4rem;
   position: absolute;
-  bottom: -1px;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,24 +157,140 @@ code {
 .home__container .searchbar__container .searchbar__inputfield {
   min-width: 25rem;
   width: 50rem;
-  height: 3.5rem;
   border-radius: 2px;
   border: none;
   outline: none;
   padding: 0 0.5rem;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--secondary-font-color);
+  color: var(--inputfield-font-color);
   background-color: var(--input-bg);
 }
-.home__container .searchbar__container .searchbar__btn {
-  display: inherit;
-  align-self: center;
-  padding: 0 1rem;
+
+.cssload-loader {
+  width: 1em;
+  height: 1em;
+  font-size: 146px;
+  position: relative;
+  display: block;
+  margin: 49px auto;
+}
+.cssload-loader * {
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+.cssload-loader:before {
+  content: "";
+  top: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  border-width: 0.5em;
+  border-style: double;
+  border-color: transparent;
+  border-radius: 1em;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  animation: spin 1.15s infinite;
+  -o-animation: spin 1.15s infinite;
+  -ms-animation: spin 1.15s infinite;
+  -webkit-animation: spin 1.15s infinite;
+  -moz-animation: spin 1.15s infinite;
+}
+.cssload-loader:after {
+  content: "";
+  top: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  border-width: 0.5em;
+  border-style: double;
+  border-color: transparent;
+  border-radius: 1em;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  animation: spin 1.15s infinite;
+  -o-animation: spin 1.15s infinite;
+  -ms-animation: spin 1.15s infinite;
+  -webkit-animation: spin 1.15s infinite;
+  -moz-animation: spin 1.15s infinite;
+  left: 0;
+  border-left-color: #5339b7;
+}
+.cssload-loader:before {
+  right: 0;
+  border-right-color: #5339b7;
+  animation-delay: -0.29s;
+  -o-animation-delay: -0.29s;
+  -ms-animation-delay: -0.29s;
+  -webkit-animation-delay: -0.29s;
+  -moz-animation-delay: -0.29s;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin {
+  from {
+    -o-transform: rotate(360deg);
+  }
+}
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(360deg);
+  }
+}
+.inputfield__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 20rem;
+  width: 30rem;
+  margin: 1.5rem 0;
+}
+.inputfield__container .inputfield__info {
+  display: flex;
+  justify-content: space-between;
+}
+.inputfield__container .inputfield__info label {
+  font-size: 1.8rem;
+}
+.inputfield__container .inputfield__info span {
   cursor: pointer;
 }
-.home__container .searchbar__container .searchbar__btn:hover {
-  color: var(--cta-font-hover);
+.inputfield__container input {
+  height: 3rem;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  padding: 0 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--inputfield-font-color);
+  background-color: var(--input-bg);
 }
 
 /*# sourceMappingURL=style.css.map */

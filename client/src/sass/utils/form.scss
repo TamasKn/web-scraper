@@ -1,0 +1,31 @@
+.form__container {
+  display: flex;
+  justify-content: center;
+  margin: 10rem auto;
+
+  section {
+    display: block;
+
+    .form__btn-wrapper {
+      margin: 2rem 0;
+    }
+
+    .form__error-msg {
+      color: #b31d1d;
+      font-size: 1.4rem;
+    }
+
+    aside {
+      text-align: center;
+      margin-top: 1rem;
+
+      a {
+        text-decoration: underline;
+
+        :hover {
+          color: var(--link-font-hover);
+        }
+      }
+    }
+  }
+}

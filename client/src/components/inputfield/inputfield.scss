@@ -1,0 +1,33 @@
+.inputfield__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 20rem;
+  width: 30rem;
+  margin: 1.5rem 0;
+
+  .inputfield__info {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+      font-size: 1.8rem;
+    }
+
+    span {
+      cursor: pointer;
+    }
+  }
+
+  input {
+    height: 3rem;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 0 .5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--inputfield-font-color);
+    background-color: var(--input-bg);
+  }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Searchbar from './searchbar/searchbar'
+import Results from './results/results'
 
 const Home = () => {
 
@@ -19,8 +20,9 @@ const Home = () => {
 
     return(
         <div className="home__container">
-            <h4>Place a site URL below</h4>
+            <h4>Place a site URL below to fetch word occurrences</h4>
             <Searchbar onInputChange={onInputChange} onSubmit={onSubmit} />
+            <Results />
         </div>
     )
 }

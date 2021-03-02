@@ -1,7 +1,11 @@
 @import "sass/index";
 
 @import "sass/utils/colors";
+@import "sass/utils/button";
+@import "sass/utils/form";
 
 @import "components/navbar/navbar";
 @import "components/footer/footer";
 @import "components/home/home";
+@import "components/spinner/spinner";
+@import "components/inputfield/inputfield";
