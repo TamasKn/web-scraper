@@ -6,7 +6,7 @@ import Login from './components/login/login'
 import Register from './components/register/register'
 import Footer from './components/footer/footer'
 
-const isAuthenticated = false
+const isAuthenticated = true
 
 const App = () => {
     return (
