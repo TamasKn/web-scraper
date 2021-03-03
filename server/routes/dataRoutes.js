@@ -12,7 +12,12 @@ const router = new express.Router()
  Access: protected
  **/
 router.post('/', async (req, res) => {
-    const { url } = req.body
+    let { url } = req.body
+
+    // Adding http:// prefix if missing from URL
+    if(!url.includes('http')) {
+        url = `http://${url}`
+    }
 
     try {
         // Fetching the provided URL
@@ -28,7 +33,7 @@ router.post('/', async (req, res) => {
                 pre: true
             }
         }
-        // Create a DOM from the fetched site
+        // Creates a DOM from the fetched site
         const parsed = await parse(request.data, parseOptions)
 
         // If its a text file, simply parsing the content,
@@ -40,15 +45,12 @@ router.post('/', async (req, res) => {
 
         const dictionary = await Helper.createDictionary(sanitized)
 
-        // Save result to database
+        /** Save result to database **/
 
-        // Find a chunk stream solution, also need to paginate the data
-        /** https://javascript.plainenglish.io/simple-pagination-with-node-js-mongoose-and-express-4942af479ab2 **/
-
-        // return Response(res, 200, {
-        //     success: true,
-        //     data: dictionary
-        // })
+        return Response(res, 200, {
+            success: true,
+            data: dictionary
+        })
 
 
     } catch (err) {

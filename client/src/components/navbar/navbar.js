@@ -15,7 +15,7 @@ const Navbar = ({auth}) => {
         <nav className="navbar__container">
             <div className="navbar__logo"><Link to="/">Web Scraper</Link></div>
             {
-                (auth && user)
+                (auth && user !== null)
                     ?
                         <div className="navbar__username">
                             <div className="navbar__username--dropdown">

@@ -8,7 +8,7 @@ const Searchbar = ({onInputChange, onSubmit}) => (
         <div
             className="button-cta"
             onClick={onSubmit}
-        >Scraping</div>
+        >Scrape it!</div>
     </div>
 )
 

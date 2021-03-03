@@ -2,6 +2,9 @@ import axios from 'axios'
 import Cookie from 'js-cookie'
 import Auth from './auth'
 
+// Change this if the server running somewhere else
+export const server = 'http://localhost:5000'
+
 export const isValidEmail = (email) => {
     return /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(email)
 }
@@ -14,7 +17,7 @@ export const isValidPassword = (password) => {
 
 export const fetchUser = async () => {
     const id = await Cookie.get('scraper')
-    const user = await axios.post('http://localhost:5000/user/',
+    const user = await axios.post(`${server}/user/`,
         {
             id
         },
@@ -39,4 +42,8 @@ export const authenticate = (res) => {
     } else {
         console.log(res.data.message)
     }
+}
+
+export const isValidURL = (url) => {
+    return   /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/.test(url)
 }

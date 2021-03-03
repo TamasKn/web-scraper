@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import InputField from '../inputfield/inputfield'
-import {authenticate, isValidEmail, isValidPassword} from '../../utils/helper'
+import {authenticate, isValidEmail, isValidPassword, server} from '../../utils/helper'
 import axios from 'axios'
 
 const Register = () => {
@@ -56,7 +56,7 @@ const Register = () => {
 
     const onSubmit = () => {
         // Check validations
-        axios.post('http://localhost:5000/user/register',
+        axios.post(`${server}/user/register`,
             {
                 firstname: field.firstname,
                 lastname: field.lastname,

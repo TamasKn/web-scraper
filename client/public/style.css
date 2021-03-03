@@ -43,6 +43,7 @@ code {
   --cta-btn-bg: #003e80;
   --cta-btn-bg-hover: #0055a9;
   --input-bg: #EFEFEF;
+  --error-font-color: #b31d1d;
 }
 
 .button-cta {
@@ -69,7 +70,7 @@ code {
   margin: 2rem 0;
 }
 .form__container section .form__error-msg {
-  color: #b31d1d;
+  color: var(--error-font-color);
   font-size: 1.4rem;
 }
 .form__container section aside {
@@ -150,6 +151,11 @@ code {
   text-align: center;
   margin: 1rem 0;
 }
+.home__container .home__error {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--error-font-color);
+}
 .home__container .searchbar__container {
   display: flex;
   justify-content: center;
@@ -165,6 +171,45 @@ code {
   font-weight: 600;
   color: var(--inputfield-font-color);
   background-color: var(--input-bg);
+}
+.home__container .result__container {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60rem;
+}
+.home__container .result__container section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 75%;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+.home__container .result__container section div::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.home__container .result__container section div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  height: 10rem;
+}
+.home__container .result__container section div::-webkit-scrollbar-thumb {
+  background-color: var(--navbar-bg);
+  outline: 1px solid slategrey;
+}
+.home__container .result__container section .result__list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.home__container .result__container section .result__list-item {
+  margin: 1rem;
+  width: 25rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #1a2556;
+  border-radius: 2px;
 }
 
 .cssload-loader {

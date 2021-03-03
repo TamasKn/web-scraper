@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import InputField from '../inputfield/inputfield'
-import {isValidEmail, authenticate} from '../../utils/helper'
+import {isValidEmail, authenticate, server} from '../../utils/helper'
 import axios from 'axios'
 import UserContext from '../../context/usercontext'
 
@@ -41,7 +41,7 @@ const Login = () => {
     const onSubmit = () => {
         // Check validations
 
-        axios.post('http://localhost:5000/user/login',
+        axios.post(`${server}/user/login`,
             {
                 email: field.email,
                 password: field.password,
