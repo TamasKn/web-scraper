@@ -2,7 +2,9 @@ const express = require('express'),
     { parse } = require('node-html-parser'),
     axios = require('axios'),
     { Helper } = require('../utils/helper'),
-    Response = require('../utils/response')
+    Response = require('../utils/response'),
+    Users = require('../database/models/user'),
+    {Protected} = require('../utils/middleware')
 
 const router = new express.Router()
 
@@ -11,8 +13,8 @@ const router = new express.Router()
  URI: domain/data/
  Access: protected
  **/
-router.post('/', async (req, res) => {
-    let { url } = req.body
+router.post('/', Protected, async (req, res) => {
+    let { url, id } = req.body
 
     // Adding http:// prefix if missing from URL
     if(!url.includes('http')) {
@@ -45,7 +47,13 @@ router.post('/', async (req, res) => {
 
         const dictionary = await Helper.createDictionary(sanitized)
 
-        /** Save result to database **/
+        // Saves result to database
+        await Users.findOneAndUpdate({_id: id},
+            {$push: { history: {
+                        url,
+                        words: dictionary.length
+                    }} }
+        )
 
         return Response(res, 200, {
             success: true,

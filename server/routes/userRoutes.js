@@ -17,7 +17,8 @@ router.post('/', Protected, async (req, res) => {
         const user = await Users.findOne({_id: id})
         return Response(res, 200, {success: true, user: {
                 firstname: user.firstname,
-                lastname: user.lastname
+                lastname: user.lastname,
+                history: user.history
             }})
 
     } catch {

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Searchbar from './searchbar/searchbar'
 import Results from './results/results'
 import axios from 'axios'
 import {server, isValidURL} from '../../utils/helper'
+import Cookie from 'js-cookie'
 
 const Home = () => {
 
@@ -10,10 +11,6 @@ const Home = () => {
     const [data, setData] = useState([])
     const [loader, setLoader] = useState(false)
     const [error, setError] = useState('')
-
-    useEffect(() => {
-
-    }, [])
 
     const onInputChange = (e) => {
         setUrl(e.target.value)
@@ -29,7 +26,8 @@ const Home = () => {
             setError('Please provider a valid URL')
         } else {
             axios.post(`${server}/data`, {
-                    url
+                    url,
+                    id: Cookie.get('scraper')
                 },
                 {
                     headers: {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import InputField from '../inputfield/inputfield'
 import {authenticate, isValidEmail, isValidPassword, server} from '../../utils/helper'
 import axios from 'axios'
@@ -19,10 +19,6 @@ const Register = () => {
         password: '',
         conf_password: ''
     })
-
-    useEffect(() => {
-
-    }, [field])
 
     const onInputChange = e => {
         e.preventDefault()
@@ -68,6 +64,8 @@ const Register = () => {
             }
         ).then(res => {
             authenticate(res)
+        }).catch(err => {
+            console.log(err)
         })
     }
 

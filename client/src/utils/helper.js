@@ -28,7 +28,7 @@ export const fetchUser = async () => {
             }
         }
     )
-    return user.data
+    return user.data.user
 
 }
 

@@ -1,13 +1,10 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import InputField from '../inputfield/inputfield'
 import {isValidEmail, authenticate, server} from '../../utils/helper'
 import axios from 'axios'
-import UserContext from '../../context/usercontext'
 
 const Login = () => {
-
-    const User = useContext(UserContext)
 
     const [field, setField] = useState({
         email: null,
@@ -54,6 +51,8 @@ const Login = () => {
             }
         ).then(res => {
             authenticate(res)
+        }).catch(err => {
+            console.log(err)
         })
     }
 

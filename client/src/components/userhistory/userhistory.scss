@@ -1,0 +1,54 @@
+.history__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  height: 60rem;
+
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 75%;
+    overflow-y: auto;
+    margin-top: 5rem;
+
+    &::-webkit-scrollbar {
+      width: .5rem;
+    }
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      height: 10rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--navbar-bg);
+      outline: 1px solid slategrey;
+    }
+
+    .history__list-item {
+      margin: 1rem;
+      width: 45rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      background-color: #1a2556;
+      border-radius: 2px;
+      height: 10rem;
+
+      p {
+        padding: .5rem;
+        font-size: 1.8rem;
+      }
+
+      span {
+        color: var(--inputfield-font-color);
+        font-size: 1.4rem;
+      }
+
+    }
+  }
+}

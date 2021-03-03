@@ -1,6 +1,15 @@
 const mongoose = require('mongoose'),
     {Helper} = require('../../utils/helper')
 
+const HistorySchema = new mongoose.Schema({
+    url: String,
+    words: Number,
+    date: {
+        type: Date,
+        default: Date.now
+    }
+})
+
 const UsersSchema = new mongoose.Schema(
     {
         firstname: {
@@ -36,7 +45,8 @@ const UsersSchema = new mongoose.Schema(
         created: {
             type: Date,
             default: Date.now
-        }
+        },
+        history: [HistorySchema]
     }
 )
 

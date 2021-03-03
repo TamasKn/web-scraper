@@ -19,11 +19,11 @@ const Navbar = ({auth}) => {
                     ?
                         <div className="navbar__username">
                             <div className="navbar__username--dropdown">
-                                {user.user.firstname} {user.user.lastname}
+                                {user.firstname} {user.lastname}
                             </div>
                             <div className="dropdown-content">
-                                <Link to="/history">History</Link>
-                                <Link to='#' onClick={logout}>Logout</Link>
+                                <a href="/history">History</a>
+                                <a href='#' onClick={logout}>Logout</a>
                             </div>
                         </div>
                     : null
