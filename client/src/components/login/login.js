@@ -1,9 +1,13 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom'
 import InputField from '../inputfield/inputfield'
-import {isValidEmail} from '../../utils/helper'
+import {isValidEmail, authenticate} from '../../utils/helper'
+import axios from 'axios'
+import UserContext from '../../context/usercontext'
 
 const Login = () => {
+
+    const User = useContext(UserContext)
 
     const [field, setField] = useState({
         email: null,
@@ -34,6 +38,25 @@ const Login = () => {
         }
     }
 
+    const onSubmit = () => {
+        // Check validations
+
+        axios.post('http://localhost:5000/user/login',
+            {
+                email: field.email,
+                password: field.password,
+            },
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).then(res => {
+            authenticate(res)
+        })
+    }
+
     return(
         <div className="form__container">
             <section>
@@ -52,7 +75,7 @@ const Login = () => {
                 />
 
                 <div className="form__btn-wrapper">
-                    <div className="button-cta">Login</div>
+                    <div className="button-cta" onClick={onSubmit}>Login</div>
                 </div>
 
                 <aside>

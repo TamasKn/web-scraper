@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import InputField from '../inputfield/inputfield'
-import { isValidEmail, isValidPassword } from '../../utils/helper'
+import {authenticate, isValidEmail, isValidPassword} from '../../utils/helper'
 import axios from 'axios'
 
 const Register = () => {
@@ -31,23 +31,23 @@ const Register = () => {
         switch (name) {
             case 'firstname':
                 setField({...field, firstname: value})
-                setErrors({ ...errors, firstname: (value.length < 1 || field.firstname === null) ? "First name is mandatory" : "" })
+                setErrors({ ...errors, firstname: (value.length < 1 || field.firstname === null) ? 'First name is mandatory' : '' })
                 break;
             case 'lastname':
                 setField({...field, lastname: value})
-                setErrors({ ...errors, lastname: (value.length < 1 || field.lastname === null) ? "Last name is mandatory" : "" })
+                setErrors({ ...errors, lastname: (value.length < 1 || field.lastname === null) ? 'Last name is mandatory' : '' })
                 break;
             case 'email':
                 setField({...field, email: value})
-                setErrors({ ...errors, email: (isValidEmail(value)) ? "" : "Email is not valid" })
+                setErrors({ ...errors, email: (isValidEmail(value)) ? '' : 'Email is not valid' })
                 break;
             case 'password':
                 setField({...field, password: value})
-                setErrors({ ...errors, password: (!isValidPassword(value)) ? "Password is weak" : "" })
+                setErrors({ ...errors, password: (isValidPassword(value)) ? '' : 'Password is weak' })
                 break;
             case 'conf_password':
                 setField({...field, conf_password: value })
-                setErrors({ ...errors, conf_password: (field.password === value && (value.length >= 8) ) ? "" : "Passwords are not matching" })
+                setErrors({ ...errors, conf_password: (field.password === value && (value.length >= 8) ) ? '' : 'Passwords are not matching' })
                 break;
             default:
                 break;
@@ -67,7 +67,7 @@ const Register = () => {
                 headers: { 'Content-Type': 'application/json' }
             }
         ).then(res => {
-            console.log(res)
+            authenticate(res)
         })
     }
 

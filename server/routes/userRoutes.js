@@ -1,9 +1,30 @@
 const express = require('express'),
     Users = require('../database/models/user'),
     {Helper} = require('../utils/helper'),
-    Response = require('../utils/response')
+    Response = require('../utils/response'),
+    { Protected } = require('../utils/middleware')
 
 const router = new express.Router()
+
+/**
+ Return: User data by ID
+ URI: domain/user/
+ Access: protected
+ **/
+router.post('/', Protected, async (req, res) => {
+    const {id} = req.body
+    try {
+        const user = await Users.findOne({_id: id})
+        return Response(res, 200, {success: true, user: {
+                firstname: user.firstname,
+                lastname: user.lastname
+            }})
+
+    } catch {
+        return Response(res, 500, {success: false, message: 'Server error'})
+    }
+
+})
 
 /**
  Return: User data if credentials are correct
@@ -16,7 +37,9 @@ router.post('/login', async (req, res) => {
     try {
         const user = await Users.findOne({email: email})
         if(user && Helper.checkPassword(password, user.password)) {
-            return Response(res, 200, {success: true, user})
+            return Response(res, 200, {success: true, user: {
+                id: user._id
+            }})
         } else {
             return Response(res, 400, {success: false, message: 'E-mail or password is not correct'})
         }
@@ -46,7 +69,8 @@ router.post('/register', async (req, res) => {
             email,
             password: Helper.hashPassword(password)
         })
-        return Response(res, 200, {success: true, message: 'Register completed'})
+        const user = await Users.find({email: email}).select('_id')
+        return Response(res, 200, {success: true, user: {id: user[0]._id}})
 
     } catch(err) {
 

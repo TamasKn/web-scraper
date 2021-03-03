@@ -62,7 +62,7 @@ typings/
 .rts2_cache_es/
 .rts2_cache_umd/
 
-# Optional REPL history
+# Optional REPL userhistory
 .node_repl_history
 
 # Output of 'npm pack'
