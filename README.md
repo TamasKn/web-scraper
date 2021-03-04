@@ -51,3 +51,9 @@ React.js application, state management handled by Context API. There is no compl
 only the user related data stored globally so Redux would have been an overkill.
 
 Server port: if the server running somewhere else than localhost:500, you can change in `src/utils/helper`.
+
+The Mongoose deprecation warning in the console is a known issue, by the official response it can be safely ignored.
+They recommend to use mongoose version 5.11.15, which is already set in the package.json, however at new install it 
+can appear again, just install the mentioned version to clear up console.
+
+- 'npm install mongoose@5.11.15'
