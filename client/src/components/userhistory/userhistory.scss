@@ -1,6 +1,5 @@
 .history__container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   margin-top: 5rem;
@@ -8,8 +7,8 @@
 
   section {
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     width: 75%;
     overflow-y: auto;
     margin-top: 5rem;

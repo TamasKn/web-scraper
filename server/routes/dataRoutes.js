@@ -1,7 +1,5 @@
 const express = require('express'),
-    { parse } = require('node-html-parser'),
-    axios = require('axios'),
-    { Helper } = require('../utils/helper'),
+    {DataProcessor} = require('../utils/dataprocessor'),
     Response = require('../utils/response'),
     Users = require('../database/models/user'),
     {Protected} = require('../utils/middleware')
@@ -22,42 +20,22 @@ router.post('/', Protected, async (req, res) => {
     }
 
     try {
-        // Fetching the provided URL
-        const request = await axios.get(url)
-
-        const parseOptions = {
-            lowerCaseTagName: false,
-            comment: false,
-            blockTextElements: {
-                script: false,
-                noscript: true,
-                style: false,
-                pre: true
-            }
-        }
-        // Creates a DOM from the fetched site
-        const parsed = await parse(request.data, parseOptions)
-
-        // If its a text file, simply parsing the content,
-        // for html sites, targeting only the body tag and parsing its text content.
-        // Then creates an array of words
-        const sanitized = await (url.includes('.txt'))
-            ? Helper.textSanitizer(parsed.textContent).split(' ')
-            : Helper.textSanitizer(parsed.querySelector('body').textContent).split(' ')
-
-        const dictionary = await Helper.createDictionary(sanitized)
+        // Parsing the HTML and creating the dictionary of word occurrences
+        const processedHtmlText = await DataProcessor(url)
 
         // Saves result to database
         await Users.findOneAndUpdate({_id: id},
             {$push: { history: {
                         url,
-                        words: dictionary.length
+                        words: processedHtmlText.length
                     }} }
         )
 
+        // { array: { $push: { property: {$each: ['value'], $position: 0 } } } },
+
         return Response(res, 200, {
             success: true,
-            data: dictionary
+            data: processedHtmlText
         })
 
 

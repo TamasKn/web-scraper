@@ -1,23 +1,33 @@
-import {useEffect, useContext} from 'react'
+import {useEffect, useContext, useState} from 'react'
 import UserContext from '../../context/usercontext'
 import {fetchUser} from '../../utils/helper'
+import Spinner from '../spinner/spinner'
 
 const UserHistory = () => {
 
     const user = useContext(UserContext)
 
+    const [loader, setLoader] = useState(true)
+    console.log(user)
+
     useEffect(() => {
-        fetchUser()
+
+        fetchUser().then(() => setLoader(false))
+
     }, [])
+
+
 
     return(
         <div className="history__container">
             <h1>Your scraping history</h1>
             <section>
                 {
-                    (user)
-                        ?
-                            user.history.map((el, idx) => (
+                    (loader)
+                        ? <Spinner />
+                        : (user && user.history.length > 0)
+                            ?
+                            user.history.slice(0).reverse().map((el, idx) => (
                                 <div key={idx} className="history__list-item">
                                     <p>
                                         <span>URL: </span>
@@ -29,7 +39,7 @@ const UserHistory = () => {
                                     </p>
                                 </div>
                             ))
-                        : <p>You have not scraped any site yet</p>
+                            : <p>You have not scraped any site yet</p>
                 }
             </section>
 
