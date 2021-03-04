@@ -1,9 +1,12 @@
-const mongoose = require('mongoose')
-const {connectTestDB} = require('../database/mongoDB')
-const Users = require('../database/models/user')
-const express = require('express')
-const userRoutes = require('../routes/userRoutes')
-const supertest = require('supertest')
+const mongoose = require('mongoose'),
+    {connectTestDB} = require('../database/mongoDB'),
+    Users = require('../database/models/user'),
+    express = require('express'),
+    userRoutes = require('../routes/userRoutes'),
+    supertest = require('supertest'),
+    path = require('path')
+
+require('dotenv').config({path: path.join(__dirname, '../.env')})
 
 function createServer() {
     const app = express()

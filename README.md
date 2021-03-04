@@ -8,6 +8,11 @@ Install
 - `npm run dev` - Development
 - `npm start` - Production
 
+Testing
+
+- `npm test`
+- `npm run test:coverage` - Get test coverage
+
 Server is built on Node.js.
 
 Data processing for site scraping built with node-html-parser. I implemented Cheerio as well but
@@ -23,3 +28,6 @@ HTML processing steps:
 - Splitting the words into an array
 - Record the number of occurrences into a hash table
 - Sending the dictionary
+
+Authentication added. It is not a proper and secure one but good enough to simulate the UX 
+of register and login. Normally I would use JWT and sending token wrapped into cookies for the client.

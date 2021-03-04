@@ -5,7 +5,7 @@ const express = require('express'),
     path = require('path'),
     mongoSanitize = require('express-mongo-sanitize')
 
-require("dotenv").config({path: path.join(__dirname, '.env')})
+require('dotenv').config({path: path.join(__dirname, '.env')})
 
 const app = express()
 const PORT = process.env.PORT || 5000

@@ -12,7 +12,7 @@ const connectDB = async () => {
 }
 
 const connectTestDB = async () => {
-    const conn = await mongoose.connect('mongodb+srv://client:r4ZEM14lVaf3siBv@scraper.ewfih.mongodb.net/test', {
+    const conn = await mongoose.connect(process.env.DB_TEST, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
