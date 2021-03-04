@@ -45,7 +45,7 @@ Install
 
 Testing
 
-- 'npm test'
+- `npm test`
 
 React.js application, state management handled by Context API. There is no complex data flow across the application,
 only the user related data stored globally so Redux would have been an overkill.
@@ -56,4 +56,4 @@ The Mongoose deprecation warning in the console is a known issue, by the officia
 They recommend to use mongoose version 5.11.15, which is already set in the package.json, however at new install it 
 can appear again, just install the mentioned version to clear up console.
 
-- 'npm install mongoose@5.11.15'
+- `npm install mongoose@5.11.15`
