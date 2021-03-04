@@ -35,10 +35,8 @@ const Results = ({loader, data}) => {
                             : null
                 }
             </section>
-
         </div>
     )
-
 }
 
 export default Results

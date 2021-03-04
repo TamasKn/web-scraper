@@ -23,7 +23,7 @@ const Navbar = ({auth}) => {
                             </div>
                             <div className="dropdown-content">
                                 <a href="/history">History</a>
-                                <a href='#' onClick={logout}>Logout</a>
+                                <a href="#" onClick={logout}>Logout</a>
                             </div>
                         </div>
                     : null

@@ -6,15 +6,11 @@ import Spinner from '../spinner/spinner'
 const UserHistory = () => {
 
     const user = useContext(UserContext)
-
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-
         fetchUser().then(() => setLoader(false))
-
     }, [])
-
 
     return(
         <div className="history__container">
@@ -40,7 +36,6 @@ const UserHistory = () => {
                             : <p>You have not scraped any site yet</p>
                 }
             </section>
-
         </div>
     )
 }

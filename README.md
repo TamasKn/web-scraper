@@ -49,3 +49,5 @@ Testing
 
 React.js application, state management handled by Context API. There is no complex data flow across the application,
 only the user related data stored globally so Redux would have been an overkill.
+
+Server port: if the server running somewhere else than localhost:500, you can change in `src/utils/helper`.

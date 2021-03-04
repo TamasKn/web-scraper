@@ -3,7 +3,7 @@ const InputField = ({name, type, label, onChange, info}) => (
         <div className="inputfield__info">
             <label htmlFor={name}>{label}</label>
             {
-                (info !== undefined)
+                (info)
                     ? <span title={info}>!!!</span>
                     : null
             }
@@ -15,6 +15,5 @@ const InputField = ({name, type, label, onChange, info}) => (
         />
     </div>
 )
-
 
 export default InputField

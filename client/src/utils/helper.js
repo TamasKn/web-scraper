@@ -17,7 +17,7 @@ export const isValidPassword = (password) => {
 
 export const fetchUser = async () => {
     const id = await Cookie.get('scraper')
-    const user = await axios.post(`${server}/user/`,
+    const {data} = await axios.post(`${server}/user/`,
         {
             id
         },
@@ -28,7 +28,7 @@ export const fetchUser = async () => {
             }
         }
     )
-    return user.data.user
+    return data.user
 
 }
 
