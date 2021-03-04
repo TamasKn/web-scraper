@@ -8,14 +8,12 @@ const UserHistory = () => {
     const user = useContext(UserContext)
 
     const [loader, setLoader] = useState(true)
-    console.log(user)
 
     useEffect(() => {
 
         fetchUser().then(() => setLoader(false))
 
     }, [])
-
 
 
     return(

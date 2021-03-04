@@ -11,7 +11,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Database connection
-const connectDB = require('./database/mongoDB')
+const {connectDB} = require('./database/mongoDB')
 
 const userRoutes = require('./routes/userRoutes')
 const dataRoutes = require('./routes/dataRoutes')

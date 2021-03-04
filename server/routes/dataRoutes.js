@@ -31,8 +31,6 @@ router.post('/', Protected, async (req, res) => {
                     }} }
         )
 
-        // { array: { $push: { property: {$each: ['value'], $position: 0 } } } },
-
         return Response(res, 200, {
             success: true,
             data: processedHtmlText

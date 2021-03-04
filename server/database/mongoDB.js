@@ -11,4 +11,16 @@ const connectDB = async () => {
     console.log(`Mongo DB connected: ${conn.connection.host}`)
 }
 
-module.exports = connectDB
+const connectTestDB = async () => {
+    const conn = await mongoose.connect('mongodb+srv://client:r4ZEM14lVaf3siBv@scraper.ewfih.mongodb.net/test', {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    })
+}
+
+module.exports = {
+    connectDB,
+    connectTestDB
+}
