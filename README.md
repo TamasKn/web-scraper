@@ -4,6 +4,7 @@
 
 Install
 
+- `cd /server`
 - `npm install`
 - `npm run dev` - Development
 - `npm start` - Production
@@ -31,3 +32,20 @@ HTML processing steps:
 
 Authentication added. It is not a proper and secure one but good enough to simulate the UX 
 of register and login. Normally I would use JWT and sending token wrapped into cookies for the client.
+
+
+### Frontend
+
+Install
+
+- `cd /client`
+- `npm install`
+- `npm start`
+- `npm run sass:compile` - CSS preprocessor
+
+Testing
+
+- 'npm test'
+
+React.js application, state management handled by Context API. There is no complex data flow across the application,
+only the user related data stored globally so Redux would have been an overkill.

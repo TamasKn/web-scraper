@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import InputField from '../inputfield/inputfield'
 import {isValidEmail, authenticate, server} from '../../utils/helper'
@@ -11,12 +11,9 @@ const Login = () => {
         password: null
     })
     const [errors, setErrors] = useState({
-        email: ''
+        email: '',
+        response: ''
     })
-
-    useEffect(() => {
-
-    }, [field])
 
     const onInputChange = (e) => {
         e.preventDefault()
@@ -36,24 +33,24 @@ const Login = () => {
     }
 
     const onSubmit = () => {
-        // Check validations
-
-        axios.post(`${server}/user/login`,
-            {
-                email: field.email,
-                password: field.password,
-            },
-            {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+        if(field.email && field.password && !errors.email.length) {
+            axios.post(`${server}/user/login`,
+                {
+                    email: field.email,
+                    password: field.password,
+                },
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
                 }
-            }
-        ).then(res => {
-            authenticate(res)
-        }).catch(err => {
-            console.log(err)
-        })
+            ).then(res => {
+                authenticate(res)
+            }).catch(err => {
+                setErrors({...errors, response: err.response.data.message})
+            })
+        }
     }
 
     return(
@@ -73,6 +70,7 @@ const Login = () => {
                     onChange={onInputChange}
                 />
 
+                <div className="form__error-msg">{errors.response}</div>
                 <div className="form__btn-wrapper">
                     <div className="button-cta" onClick={onSubmit}>Login</div>
                 </div>

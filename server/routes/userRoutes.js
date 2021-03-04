@@ -75,7 +75,6 @@ router.post('/register', async (req, res) => {
 
     } catch(err) {
 
-        console.log(err.message)
         if (err.name === 'ValidationError') {
             return Response(res, 400, {success: false, message: 'Input is not valid'})
         }

@@ -17,7 +17,8 @@ const Register = () => {
         lastname: '',
         email: '',
         password: '',
-        conf_password: ''
+        conf_password: '',
+        response: ''
     })
 
     const onInputChange = e => {
@@ -51,22 +52,23 @@ const Register = () => {
     }
 
     const onSubmit = () => {
-        // Check validations
-        axios.post(`${server}/user/register`,
-            {
-                firstname: field.firstname,
-                lastname: field.lastname,
-                email: field.email,
-                password: field.password,
-            },
-            {
-                headers: { 'Content-Type': 'application/json' }
-            }
-        ).then(res => {
-            authenticate(res)
-        }).catch(err => {
-            console.log(err)
-        })
+        if (field.firstname && field.lastname && field.email && field.password) {
+            axios.post(`${server}/user/register`,
+                {
+                    firstname: field.firstname,
+                    lastname: field.lastname,
+                    email: field.email,
+                    password: field.password,
+                },
+                {
+                    headers: {'Content-Type': 'application/json'}
+                }
+            ).then(res => {
+                authenticate(res)
+            }).catch(err => {
+                setErrors({...errors, response: err.response.data.message})
+            })
+        }
     }
 
     return(
@@ -108,6 +110,7 @@ const Register = () => {
                     onChange={onInputChange}
                 />
                 <div className="form__error-msg">{errors.conf_password}</div>
+                <div className="form__error-msg">{errors.response}</div>
 
                 <div className="form__btn-wrapper">
                     <div className="button-cta" onClick={onSubmit}>Register</div>
